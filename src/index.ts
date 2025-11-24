@@ -29,6 +29,9 @@ export class KmsSigner {
 
     return toAccount({
       address,
+      async sign({ hash }): Promise<`0x${string}`> {
+        return await signDigestHex(hash, credentials, address);
+      },
       async signMessage({ message }): Promise<`0x${string}`> {
         return await signDigestHex(hashMessage(message), credentials, address);
       },
